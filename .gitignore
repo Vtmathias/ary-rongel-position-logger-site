@@ -1,0 +1,15 @@
+# Este repositório contém somente o site e sua documentação pública.
+credentials/
+credentials.json*
+client_secret*.json*
+token.json*
+token.dpapi*
+*.pem
+*.key
+.env
+.env.*
+.DS_Store
+Thumbs.db
+__pycache__/
+.venv/
+node_modules/

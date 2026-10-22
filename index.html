@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Documentação pública do Ary Rongel Position Logger: registro de posição NMEA, arquivos GeoJSON e armazenamento autorizado no Google Drive.">
+  <title>Ary Rongel Position Logger</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">AR</span><span>Ary Rongel<br>Position Logger</span></a>
+      <nav aria-label="Navegação principal">
+        <ul>
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="https://github.com/Vtmathias/ary-rongel-position-logger-site">GitHub</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="title">
+      <p class="eyebrow">Registro de posição · documentação pública</p>
+      <h1 id="title">Ary Rongel Position Logger</h1>
+      <p class="lead">Aplicativo Windows utilizado para registrar dados de posição do Navio de Apoio Oceanográfico Ary Rongel e armazenar arquivos GeoJSON no Google Drive da conta autorizada.</p>
+      <div class="tags" aria-label="Características"><span class="tag">Windows</span><span class="tag">NMEA</span><span class="tag">GeoJSON</span><span class="tag">Google Drive API</span></div>
+    </section>
+
+    <section class="section split" aria-labelledby="about">
+      <div>
+        <h2 id="about">Histórico de posições, organizado por dia UTC.</h2>
+        <p>O aplicativo recebe sentenças NMEA da rede de navegação por TCP, UDP ou porta serial. Processa latitude, longitude, horário UTC, velocidade, curso verdadeiro e heading, conforme os dados disponíveis.</p>
+        <p>Uma amostra é registrada a cada dois minutos, no intervalo padrão. O histórico é mantido em arquivos GeoJSON diários no computador operacional. Os diários fechados e as cópias de backup podem ser enviados ao Google Drive autorizado pelo operador.</p>
+        <p>O projeto foi desenvolvido para apoiar o intercâmbio de dados de posição relacionado ao COMNAP Asset Tracking System (CATS). A utilização dos arquivos pelo destinatário depende do fluxo de trabalho acordado com os responsáveis.</p>
+      </div>
+      <dl class="identity">
+        <dt>Embarcação</dt><dd>Navio de Apoio Oceanográfico Ary Rongel</dd>
+        <dt>Callsign</dt><dd>PWAR</dd>
+        <dt>Referência de tempo</dt><dd>UTC</dd>
+        <dt>Produto do registro</dt><dd>Arquivo GeoJSON diário</dd>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="workflow">
+      <h2 id="workflow">Como os dados são armazenados</h2>
+      <ol class="steps">
+        <li><span class="step-number">01 / RECEPÇÃO</span><h3>Fonte NMEA</h3><p>Leitura contínua dos dados de navegação configurados pelo operador.</p></li>
+        <li><span class="step-number">02 / REGISTRO</span><h3>Histórico local</h3><p>Amostras válidas em um arquivo por dia UTC, com continuidade após reinicialização.</p></li>
+        <li><span class="step-number">03 / ARQUIVO</span><h3>Google Drive autorizado</h3><p>Envio de diários fechados e backups, preservando a cópia local.</p></li>
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="drive">
+      <h2 id="drive">Uso do Google Drive</h2>
+      <p>A conexão com o Google Drive é autorizada pelo operador pelo fluxo OAuth 2.0. O aplicativo solicita somente o escopo:</p>
+      <code class="scope">https://www.googleapis.com/auth/drive.file</code>
+      <p>Esse escopo permite trabalhar com arquivos e pastas criados ou abertos pelo aplicativo, dentro da autorização concedida, em vez de conceder acesso irrestrito a todos os arquivos do Drive. A versão atual cria e localiza os próprios diários e backups; os diários publicados não são sobrescritos.</p>
+      <p>O aplicativo utiliza a pasta <strong>CATS - Ary Rongel</strong>, com as subpastas <strong>Diarios</strong> e <strong>Backups</strong>. O compartilhamento é decidido pelo operador ou administrador no Google Drive. A aplicação não torna os arquivos públicos automaticamente.</p>
+      <div class="note"><p>Este site contém documentação. Os registros de posição e os tokens OAuth ficam no computador operacional e, no caso dos arquivos enviados, no Google Drive autorizado. Eles não são publicados neste site pelo aplicativo.</p></div>
+      <div class="policy-links">
+        <a class="button" href="privacy.html" lang="en">Privacy Policy</a>
+        <a class="button secondary" href="terms.html" lang="en">Terms of Service</a>
+      </div>
+    </section>
+
+    <section class="reference" aria-labelledby="reference">
+      <h2 id="reference">Referência externa</h2>
+      <p>Consulte os <a href="https://www.comnap.aq/projects">projetos do COMNAP</a> para informações sobre as iniciativas dessa organização. Este site não apresenta o aplicativo como desenvolvido, patrocinado, homologado ou oficialmente mantido pelo COMNAP.</p>
+      <p>Documentação e arquivos deste site: <a href="https://github.com/Vtmathias/ary-rongel-position-logger-site">repositório público no GitHub</a>.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Ary Rongel Position Logger · PWAR</p>
+      <div class="footer-links"><a href="privacy.html" lang="en">Privacy Policy</a><a href="terms.html" lang="en">Terms of Service</a><a href="https://github.com/Vtmathias/ary-rongel-position-logger-site">GitHub</a></div>
+    </div>
+  </footer>
+</body>
+</html>
